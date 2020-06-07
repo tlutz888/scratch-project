@@ -1,7 +1,8 @@
 const path = require('path');
 const express = require('express');
 
-const timerHistoryRouter = require('./routes/timerHistory.js')
+const timerHistoryRouter = require('./routes/timerHistory.js');
+const projectsRouter = require('./routes/projects.js');
 
 const app = express();
 
@@ -10,7 +11,8 @@ const PORT = 3000;
 app.use(express.json());
 
 // add your api routers here
-app.use('/api/:user/timerHistory', timerHistoryRouter);
+app.use('/api/projects', projectsRouter);
+app.use('/api/timerHistory', timerHistoryRouter);
 
 app.get('/', (req, res) =>
   res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'))

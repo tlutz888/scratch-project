@@ -5,22 +5,17 @@ const timerHistoryController = {};
 
 timerHistoryController.createTimerEntry = (req, res, next) => {
 
-  /* *********
+  const { time_spent, updated_at, category_id, project_id } = req.body;
+  const user_id = req.params.user;
 
-  INSERT INTO timer_history (time_spent, updated_at, category_id, project_id, user_id)
-  VALUES (240, '2008-11-11 13:23:44', 1, 1, 1)
+  // convert time from request to date string
+  const updated_at_string = new Date(updated_at)
 
-  ********* */
+  const values = [ time_spent, updated_at_string, category_id, project_id, user_id ];
 
-  // const { time_spent, updated_at, category_id, project_id } = req.body
-  // const values = [ time_spent, updated_at, category_id, project_id ]
-  // const user_id = req.params.user_id
+  const queryText = "INSERT INTO timer_history (time_spent, updated_at, category_id, project_id, user_id) VALUES ($1, $2, $3, $4, $5)";
 
-  const queryText = "INSERT INTO timer_history (time_spent, updated_at, category_id, project_id, user_id) VALUES (240, '2008-11-11 13:23:44', 1, 1, 1)"
-
-  // const queryText = "INSERT INTO timer_history (time_spent, updated_at, category_id, project_id, user_id) VALUES ($1, $2, $3, $4, $5)"
-
-  db.query(queryText)
+  db.query(queryText, values)
     .then (data => {
       console.log(`something has been added to the DB`)
       return next()
@@ -32,6 +27,4 @@ timerHistoryController.createTimerEntry = (req, res, next) => {
     }));
 }
 
-
-
-modules.export = timerHistoryController;
+module.exports = timerHistoryController;
