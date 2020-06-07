@@ -23,7 +23,8 @@ class LoginContainer extends Component {
         return res.json();
       })
       .then((data) => {
-        // invoke login reducer
+        console.log('this is data', data)
+        // expect date to look like => {user: res.locals.user, categories: [...res.locals.categories], projects: [...res.locals.projects], timerActivity: [...res.locals.timerActivity]}
         login(data);
       })
       .catch((err) => console.log('Login get login: ERROR: ', err));
@@ -32,7 +33,7 @@ class LoginContainer extends Component {
   render() {
     return (
       <section className="mainSection">
-        <div name="form" id="form-log-in">
+        <div id="form">
           <h1 className="site-name" id="site-name-log">
             Tracker
           </h1>
