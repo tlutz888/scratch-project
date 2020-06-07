@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import MainContainer from './containers/MainContainer';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import store from './store';
+import { Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoginContainer from './containers/LoginContainer';
 import SignUpContainer from './containers/SignUpContainer';
+import MainContainer from './containers/MainContainer';
 
 import './stylesheets/styles.css';
 
-const App = (props) => {
+const App = ({ store }) => {
   return (
-    <div className="router">
-      <main>
-        <Switch>
-          <Route exact path="/" component={MainContainer} />
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/signup" component={SignUpContainer} />
-        </Switch>
-      </main>
-    </div>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={LoginContainer} />
+            <Route exact path="/signup" component={SignUpContainer} />
+            {/* real user <Route exact path="/:user" component={MainContainer} /> */}
+            <Route exact path="/user" component={MainContainer} />
+          </Switch>
+        </Router>
+      </Provider>
   );
 };
+
+App.propTypes = {
+  store: PropTypes.object.isRequired
+}
 
 export default App;
