@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CategoryCard from './components/CategoryCard.jsx';
 import NavBar from './components/NavBar.jsx';
@@ -10,8 +10,8 @@ const mapStateToProps = (state) => ({
   projects: state.projects,
   categories: state.categories,
   timerActivity: state.timerActivity,
-  currentProjectName = '';
-  currentCategoryName = '';
+  currentProjectName: state.currentProjectName,
+  currentCategoryName: state.currentCategoryName,
   currentProjectId: state.currentProjectId,
   currentCategoryId: state.currentCategoryId,
   startTimer: state.startTimer,
@@ -24,11 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
   logOut: (user) => {
     dispatch(actions.logOut(user));
   },
-  playtTimer: (currentIds) => {
+  playTimer: (currentIds) => {
     dispatch(actions.logOut(currentIds));
   },
   stopTimer: (currentIds) => {
-    dispatch(actions.logOut(currentIds);
+    dispatch(actions.logOut(currentIds));
   },
 });
 
@@ -36,6 +36,8 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
   }
+
+  
 
   render() {
     const categoryElems = categories.map((info, key) => {
@@ -53,7 +55,7 @@ class MainContainer extends Component {
           startTimer={this.props.startTimer}
           endTimer={this.props.endTimer}
           lastInterval={this.props.lastInterval}
-          playtTimer={this.props.playTimer}
+          playTimer={this.props.playTimer}
           stopTimer={this.props.stopTimer}
         />
       );
@@ -72,7 +74,7 @@ class MainContainer extends Component {
               currentCategoryName = {this.props.currentCategoryName}
               startTimer={this.props.startTimer}
               endTimer={this.props.endTimer}
-              playtTimer={this.props.playTimer}
+              playTimer={this.props.playTimer}
               stopTimer={this.props.stopTimer}
             />
           </div>

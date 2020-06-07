@@ -32,7 +32,7 @@ const LoginContainer = props => {
       password: fields.password
     }
     fetch('/api/', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'content-type': 'application/json',
       },
@@ -57,7 +57,7 @@ const LoginContainer = props => {
       .catch((err) => console.log('Login get login: ERROR: ', err));
   }
 
-  render() {
+  // render() {
     return (
       <section className="mainSection">
         <div id="form">
@@ -97,7 +97,7 @@ const LoginContainer = props => {
         </div>
       </section>
     );
-  }
+  // }
 }
 
 export default LoginContainer;
