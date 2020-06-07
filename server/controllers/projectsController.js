@@ -5,7 +5,8 @@ const projectsController = {};
 
 projectsController.getProjects = (req, res, next) => {
   const queryText = 'SELECT * FROM project WHERE user_id = $1;';
-  const values = [req.params.user]
+  const { user_id } = req.body;
+  const values = [user_id]
 
   db.query(queryText, values)
     .then(data => {
@@ -22,7 +23,7 @@ projectsController.getProjects = (req, res, next) => {
 projectsController.addProject = (req, res, next) => {
 
   const { title } = req.body;
-  const user_id = req.params.user;
+  const user_id = req.body;
   const values = [title, user_id]
   const queryText = 'INSERT INTO project (title, user_id) VALUES ($1, $2);';
 
