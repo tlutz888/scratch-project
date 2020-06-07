@@ -7,4 +7,8 @@ router.get('/:user', projectsController.getProjects, (req, res) => {
   res.status(200).json(res.locals.projects);
 })
 
+router.post('/:user', projectsController.addProject, (req, res) => {
+  res.status(200).json('project added!');
+})
+
 module.exports = router;

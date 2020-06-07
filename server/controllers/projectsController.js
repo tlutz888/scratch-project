@@ -13,7 +13,26 @@ projectsController.getProjects = (req, res, next) => {
       return next();
     })
     .catch(err => next({
-      log: 'Error in timerHistoryController.creatTimerEntry',
+      log: 'Error in projectsController.getProjects',
+      status: 400,
+      message: err,
+    }));
+}
+
+projectsController.addProject = (req, res, next) => {
+
+  const { title } = req.body;
+  const user_id = req.params.user;
+  const values = [title, user_id]
+  const queryText = 'INSERT INTO project (title, user_id) VALUES ($1, $2);';
+
+  db.query(queryText, values)
+    .then(data => {
+      console.log(`something has been added to the DB`);
+      return next()
+    })
+    .catch(err => next({
+      log: 'Error in projectController.addProject',
       status: 400,
       message: err,
     }));
