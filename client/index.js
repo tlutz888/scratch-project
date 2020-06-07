@@ -1,11 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import store from './store';
+import App from './App.jsx';
 
-render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('app')
-);
+// render(<div>Hello World</div>, document.getElementById('app'));
+
+render(<App store={store} />, document.getElementById('app'));

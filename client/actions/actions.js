@@ -1,58 +1,63 @@
-import * as types from '../constants/actionTypes'
+import * as types from '../constants/constantsType';
 
 // export const  = () => ({
 //   type: types.,
 //   payload: ,
 // });
 
-export const login = () => ({
+export const login = (allData) => ({
   type: types.LOGIN,
-  payload: ,
+  payload: allData,
 });
 
-export const signUp = () => ({
-  type: types.SIGNUP,
-  payload: ,
-});
+// export const signUp = () => ({
+//   type: types.SIGNUP,
+//   payload: ,
+// });
 
-export const logOut = () => ({
-  type: types.LOGOUT,
-  payload: ,
-});
+// export const logOut = () => ({
+//   type: types.LOGOUT,
+//   payload: ,
+// });
 
-export const addProject = () => ({
-  type: types.ADD_PROJECT,
-  payload: ,
-});
+// export const addProject = () => ({
+//   type: types.ADD_PROJECT,
+//   payload: ,
+// });
 
-export const deleteProject = () => ({
-  type: types.DELETE_PROJECT,
-  payload: ,
-});
+// export const deleteProject = () => ({
+//   type: types.DELETE_PROJECT,
+//   payload: ,
+// });
 
-export const completeProject = () => ({
-  type: types.COMPLETE_PROJECT,
-  payload: ,
-});
+// export const completeProject = () => ({
+//   type: types.COMPLETE_PROJECT,
+//   payload: ,
+// });
 
-export const addCategory = () => ({
-  type: types.ADD_CATEGORY,
-  payload: ,
-});
+// export const addCategory = () => ({
+//   type: types.ADD_CATEGORY,
+//   payload: ,
+// });
 
-export const deleteCategory = () => ({
-  type: types.DELETE_CATEGORY,
-  payload: ,
-});
+// export const deleteCategory = () => ({
+//   type: types.DELETE_CATEGORY,
+//   payload: ,
+// });
 
-export const startTimer = () => ({
+// if statement if currenIds are not the same as state trigger stopTimer
+// send info and resert state and start new timer
+export const startTimer = (currentIds) => ({
   type: types.START_TIMER,
-  payload: ,
+  // expecting object {  currentProjectId: 0, currentCategoryId: 0 }
+  payload: currentIds,
 });
 
-export const stopTimer = () => ({
+// if statement if currenIds are the same as state trigger stopTimer
+// send info and resert state
+export const stopTimer = (currentIds) => ({
   type: types.STOP_TIMER,
-  payload: ,
+  payload: currentIds,
 });
 
 // export const  = () => ({
