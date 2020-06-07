@@ -1,6 +1,6 @@
 import * as types from '../constants/constantsType';
 
-const initialState ={
+const initialState = {
   user: {},
   projects: [],
   categories: [],
@@ -9,9 +9,9 @@ const initialState ={
   startTimer: 0,
   endTimer: 0,
   lastInterval: 0,
-}
+};
 
-const mainReducer = (state=initialState, action) => {
+const mainReducer = (state = initialState, action) => {
   let user;
   let projects;
   let categories;
@@ -22,17 +22,17 @@ const mainReducer = (state=initialState, action) => {
   let lastInterval;
 
   switch (action.type) {
-// case types.SIGNUP
-// case types.LOGOUT
-// case types.ADD_PROJECT
-// case types.DELETE_PROJECT
-// case types.COMPLETE_PROJECT
-// case types.ADD_CATEGORY
-// case types.DELETE_CATEGORY
+    // case types.SIGNUP
+    // case types.LOGOUT
+    // case types.ADD_PROJECT
+    // case types.DELETE_PROJECT
+    // case types.COMPLETE_PROJECT
+    // case types.ADD_CATEGORY
+    // case types.DELETE_CATEGORY
     case types.LOGIN:
-      user= action.payload.user;
-      projects= action.payload.projects;
-      categories= action.payload.categories;
+      user = action.payload.user;
+      projects = action.payload.projects;
+      categories = action.payload.categories;
 
       return {
         ...state,
@@ -41,10 +41,9 @@ const mainReducer = (state=initialState, action) => {
         categories,
       };
 
-
     case types.START_TIMER:
       startTimer = Date.now();
-      currentProjectId=  action.payload.currentProjectId;
+      currentProjectId = action.payload.currentProjectId;
       currentCategoryId = action.payload.currentCategoryId;
 
       return {
@@ -54,12 +53,12 @@ const mainReducer = (state=initialState, action) => {
         startTimer,
       };
 
-    case types.STOP_TIMER: 
+    case types.STOP_TIMER:
       stopTimer = Date.now();
-      currentProjectId=  action.payload.currentProjectId;
+      currentProjectId = action.payload.currentProjectId;
       currentCategoryId = action.payload.currentCategoryId;
-      lastInterval = startTimer - stopTimer; 
-      startTimer = 0          
+      lastInterval = startTimer - stopTimer;
+      startTimer = 0;
 
       return {
         ...state,
@@ -70,8 +69,9 @@ const mainReducer = (state=initialState, action) => {
         lastInterval,
       };
 
-    case types.ADD_PROJECT:
-
+    default:
+      return state;
   }
+};
 
-}
+export default mainReducer;
