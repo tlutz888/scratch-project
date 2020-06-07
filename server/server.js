@@ -2,11 +2,15 @@ const path = require('path');
 const express = require('express');
 const db = require('./model/db.js')
 
+const categoryRouter = require('./routes/category.js');
+
 const app = express();
 
 const PORT = 3000;
 
 app.use(express.json());
+
+app.use('/api/categories', categoryRouter)
 
 // ***** This test works to our DB! *******
 
