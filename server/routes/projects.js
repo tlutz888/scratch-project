@@ -7,12 +7,12 @@ router.get('/:user', projectsController.getProjects, (req, res) => {
 })
 
 
-router.post('/:use/addproject', trackerController.postProjects,
-  (req, res) => res.send(200).json(res.locals.addProject)
-);
+// router.post('/:user/addproject', projectsController.postProjects,
+//   (req, res) => res.send(200).json(res.locals.addProject)
+// );
 
-router.delete('/:use/deleteproject', trackerController.deleteProjects,
-(req, res) => res.send(200).json(res.locals.deleteProject)
-);
+// router.delete('/:user/deleteproject', projectsController.deleteProjects,
+// (req, res) => res.send(200).json(res.locals.deleteProject)
+// );
 
 module.exports = router;

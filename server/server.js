@@ -5,12 +5,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.urlencoded())
+app.use(express.urlencoded());
 
-/
-
-// const apiRouter = require('./routes/api');
-// app.use('/api', apiRouter);
 
 const timerHistoryRouter = require('./routes/timerHistory.js');
 app.use('/api/timerHistory', timerHistoryRouter);
