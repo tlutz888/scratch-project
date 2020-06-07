@@ -1,0 +1,10 @@
+export const LOGIN = 'LOGIN';
+export const SIGNUP = 'SIGNUP';
+export const LOGOUT = 'LOGOUT';
+export const ADD_PROJECT = 'ADD_PROJECT';
+export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const COMPLETE_PROJECT = 'COMPLETE_PROJECT';
+export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const DELETE_CATEGORY = 'DELETE_CATEGORY';
+export const START_TIMER = 'START_TIMER';
+export const STOP_TIMER = 'STOP_TIMER';
