@@ -1,52 +1,60 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux';
+import CategoryCard from './components/CategoryCard.jsx'
+import NavBar from './components/NavBar.jsx'
+import TimerModal from './components/TimerModal.jsx'
 
-// const mapStateToProps = state => ({
-//     totalMarkets: state.markets.totalMarkets,
-//     totalCards: state.markets.totalCards,
-// });
+const mapStateToProps = state => ({
+  user: state.user,
+  projects: state.projects,
+  categories: state.categories,
+  currentProjectId: state.currentProjectId,
+  currentCategoryId: state.currentCategoryId,
+  startTimer: state.startTimer,
+  endTimer: state.endTimer,
+  lastInterval: state.lastInterval,
+});
 
 class MainContainer extends Component {
   constructor(props) {
     super(props);
   }
 
-
-  // openModal(type, position, name) {
-  //   this.setState({
-  //     modalState: {
-  //       ...this.state.modalState,
-  //       open: true,
-  //       type,
-  //       position,
-  //       name
-  //     }
-  //   })
-  // }
-
   render() {
 
-    const { allData } = this.state;
-
-    const categoryElems = allData.cards.map((info, key) => {
+    const categoryElems = categories.map((info, key) => {
       return (
         <CategoryCard
-        key={key}
-        info={info}
-        allData={this.props.allData}
+          key={key}
+          info={info}
+          user={this.props.user}
+          projects={this.props.projects}
+          currentProjectId={this.props.currentProjectId}
+          currentCategoryId={this.props.currentCategoryId}
+          startTimer={this.props.startTimer}
+          endTimer={this.props.endTimer}
+          lastInterval={this.props.lastInterval}
         />
       );
     });
 
     return (
       <NavBar
-      allData={this.props.allData}
+      user={this.props.user}
     />
       <section className="mainSection">
         <div className="cardsContainer">
           {categoryElems}
           <TimerMotal
-            allData={this.props.allData}
+          user={this.props.user}
+          projects={this.props.projects}
+          categories={this.props.categories}
+          currentProjectId={this.props.currentProjectId}
+          currentCategoryId={this.props.currentCategoryId}
+          startTimer={this.props.startTimer}
+          endTimer={this.props.endTimer}
+          lastInterval={this.props.lastInterval}
           />
         </div>
       </section>
@@ -54,4 +62,4 @@ class MainContainer extends Component {
   }
 }
 
-export default MainContainer;
+export default connect(mapStateToProps, null)(MainContainer);

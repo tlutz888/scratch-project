@@ -1,1 +1,4 @@
 node_modules/
+
+# This is where our credentials for postgresql DB
+default.json

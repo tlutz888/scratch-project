@@ -7,7 +7,7 @@ const initialState ={
   currentProjectId: 0,
   currentCategoryId: 0,
   startTimer: 0,
-  endTimer: 0
+  endTimer: 0,
   lastInterval: 0,
 }
 
@@ -22,7 +22,6 @@ const mainReducer = (state=initialState, action) => {
   let lastInterval;
 
   switch (action.type) {
-// case types.LOGIN
 // case types.SIGNUP
 // case types.LOGOUT
 // case types.ADD_PROJECT
@@ -30,6 +29,19 @@ const mainReducer = (state=initialState, action) => {
 // case types.COMPLETE_PROJECT
 // case types.ADD_CATEGORY
 // case types.DELETE_CATEGORY
+    case types.LOGIN:
+      user= action.payload.user;
+      projects= action.payload.projects;
+      categories= action.payload.categories;
+
+      return {
+        ...state,
+        user,
+        projects,
+        categories,
+      };
+
+
     case types.START_TIMER:
       startTimer = Date.now();
       currentProjectId=  action.payload.currentProjectId;
