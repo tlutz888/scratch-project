@@ -5,6 +5,8 @@ import { login } from '../actions/actions';
 import { useDispatch } from 'react-redux';
 
 
+// redirect tag 
+
 const LoginContainer = () => {
   // hook in place of mapDispatchToProps
   const dispatch = useDispatch();
@@ -151,7 +153,7 @@ const LoginContainer = () => {
             value={fields.password}
             onChange={handleClick} 
           />
-          {/* when back end is working an rediresting to user page this nav link need to be deleted */}
+          {/* when back end is working an rediresting to user page this nav link need to be deleted use redirect router addlocalstate */}
           <NavLink to="/user">
             <button type="button" id="log-in" className="button" onClick={fetchLogin}>
               Log In

@@ -58,7 +58,7 @@ const mainReducer = (state = initialState, action) => {
       user = initialState.user;
       projects = initialState.projects;
       categories = initialState.categories;
-      timerActivity = initialState.imerActivity;
+      timerActivity = initialState.timerActivity;
       currentProjectName = initialState.currentProjectName;
       currentCategoryName = initialState.currentCategoryName;
       currentProjectId = initialState.currentProjectId;
@@ -160,13 +160,14 @@ const mainReducer = (state = initialState, action) => {
     case types.STOP_TIMER:
       endTimer = Date.now();
       lastInterval = endTimer - startTimer;
-      startTimer = initialState.startTimer;
+      startTimer = 0;
       currentProjectName = initialState.currentProjectName;
       currentCategoryName = initialState.currentCategoryName;
       currentProjectId = initialState.currentProjectId;
       currentCategoryId = initialState.currentCategoryId;
-      timerActivity = state.timerActivity.slice();
-      timerActivity.push(action.payload.timerActivity);
+      // timerActivity = state.timerActivity.slice();
+      // timerActivity.push(action.payload.timerActivity);
+      timerActivity = action.payload;
 
       return {
         ...state,
