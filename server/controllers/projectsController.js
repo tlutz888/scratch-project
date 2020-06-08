@@ -5,7 +5,9 @@ const projectsController = {};
 
 projectsController.getProjects = (req, res, next) => {
   const queryText = 'SELECT * FROM project WHERE user_id = $1;';
-  const { user_id } = req.body;
+
+  // if login or signup res.locals.user will contain user info, else req.body will be a direct request with user_id in body.
+  const user_id = res.locals.user ? res.locals.user._id : req.body.user_id;
   const values = [user_id]
 
   db.query(queryText, values)
