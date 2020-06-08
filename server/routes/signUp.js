@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const projectsController = require('../controllers/projectsController.js')
-const categoryController = require('../controllers/categoryController.js')
-const timerHistoryController = require('../controllers/timerHistoryController.js')
 const userController = require('../controllers/userController.js')
+const categoryController = require('../controllers/categoryController.js')
+const projectsController = require('../controllers/projectsController.js')
+const timerHistoryController = require('../controllers/timerHistoryController.js')
 
-router.get('/', userController.validateUser, categoryController.getCategory, projectsController.getProjects, timerHistoryController.getTimerHistory, (req, res) => {
-  res.status(200).json({
+router.post('/', userController.createUser, categoryController.getCategory, projectsController.getProjects, timerHistoryController.getTimerHistory, (req, res) => {
+  res.status(201).json({
     user: res.locals.user,
     categories: res.locals.categories,
     projects: res.locals.projects,

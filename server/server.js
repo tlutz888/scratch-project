@@ -6,6 +6,7 @@ const timerHistoryRouter = require('./routes/timerHistory.js');
 const projectsRouter = require('./routes/projects.js');
 const categoryRouter = require('./routes/category.js');
 const apiRouter = require('./routes/api.js');
+const signUpRouter = require('./routes/signUp.js');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 // add your api routers here
+app.use('/api/signup', signUpRouter);
 app.use('/api/projects', projectsRouter);
 app.use('/api/timerHistory', timerHistoryRouter);
 app.use('/api/categories', categoryRouter)

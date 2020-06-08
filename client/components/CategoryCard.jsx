@@ -31,9 +31,9 @@ const CategoryCard = (props) => {
     const reqData = {
       time_spent: Date.now() - startTimer,
       updated_at: new Date().toString(),
-      category_id: info.category_id,
+      category_id: info._id,
       project_id: isProjectId,
-      user_id: user.user_id,
+      user_id: user._id,
     };
     fetch('/api/', {
       method: 'POST',
@@ -52,7 +52,7 @@ const CategoryCard = (props) => {
         currentProjectName: isProject,
         currentCategoryName: info.title,
         currentProjectId: isProjectId,
-        currentCategoryId: info.category_id,
+        currentCategoryId: info._id,
       };
       dispatch(playTimer(payload));
       setIsClicked(false);
@@ -63,7 +63,7 @@ const CategoryCard = (props) => {
         currentProjectName: isProject,
         currentCategoryName: info.title,
         currentProjectId: isProjectId,
-        currentCategoryId: info.category_id,
+        currentCategoryId: info._id,
       };
       dispatch(playTimer(payload));
       setIsClicked(false);
@@ -79,7 +79,7 @@ const CategoryCard = (props) => {
     projectList.push(
       <div className="project">
         {projects[i].title}
-          <button className="stop" onClick={() => {buttonStatus === 'Stop' ? handleOnClickStop() : handleOnClickPlay(projects[i].title, projects[i].id)}}>
+          <button className="stop" onClick={() => {buttonStatus === 'Stop' ? handleOnClickStop() : handleOnClickPlay(projects[i].title, projects[i]._id)}}>
           {buttonStatus}
           </button>
       </div>

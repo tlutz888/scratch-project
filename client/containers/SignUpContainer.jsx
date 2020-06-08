@@ -40,44 +40,44 @@ const SignUpContainer = props => {
       // .then((data) => {
         // dummy data for test
         const data = {
-          Users: {
-            user_id: 1,
+          user: {
+            _id: 1,
             account_name: 'tom',
         },
-          Projects: [{
-            project_id: 1,
+          projects: [{
+            _id: 1,
             title: 'Not specified',
           }],
-          Category: [{
-            category_id: 1,
+          categories: [{
+            _id: 1,
             title: 'Coding',
           }, {
-            category_id: 2,
+            _id: 2,
             title: 'Debug',
           }, {
-            category_id: 3,
+            _id: 3,
             title: 'Meetings',
           }, {
-            category_id: 4,
+            _id: 4,
             title: 'QA',
           }, {
-            category_id: 5,
+            _id: 5,
             title: 'Code Review',
           }, {
-            category_id: 6,
+            _id: 6,
             title: 'Reasearch',
           }, {
-            category_id: 7,
+            _id: 7,
             title: 'Write Documentation',
           }, {
-            category_id: 7,
+            _id: 7,
             title: 'Other',
           }],
         }
         const payload = {};
-        payload.user = data.Users;
-        payload.projects = data.Project;
-        payload.categories = data.Category;
+        payload.user = data.user;
+        payload.projects = data.projects;
+        payload.categories = data.categories;
       //   return payload;
       // })
       // .then((payload)=> 

@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { useSelector } from "react-redux";
+// import { connect } from 'react-redux';
+// import { useSelector } from "react-redux";
 
 const TimerModal = (props) => {
   const {currentProjectName, currentCategoryName, startTimer} = props;
@@ -10,11 +10,11 @@ const TimerModal = (props) => {
   
   useEffect(() => {
     let interval = null;
-    if (startTimer ==! 0) {
+    if (startTimer !== 0) {
       setIsActive(true);
       interval = setInterval(() => {
         if(seconds < 61){
-          setSeconds((seconds) => {seconds + 1})
+          setSeconds(seconds => seconds + 1)
         }else{
           setMinutes((minutes) => {minutes+1});
           setSeconds(0);
@@ -27,7 +27,7 @@ const TimerModal = (props) => {
       setIsActive(false);
     }
     return () => clearInterval(interval);
-  }, [isActive, minutes, seconds]);
+  }, [isActive, minutes, seconds, startTimer]);
 
   return (
     <div className="project"> 

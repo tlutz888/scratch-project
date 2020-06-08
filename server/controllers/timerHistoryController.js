@@ -27,7 +27,9 @@ timerHistoryController.createTimerEntry = (req, res, next) => {
 }
 
 timerHistoryController.getTimerHistory = (req, res, next) => {
-  const { user_id } = req.body;
+  
+  // if login or signup res.locals.user will contain user info, else req.body will be a direct request with user_id in body.
+  const user_id = res.locals.user ? res.locals.user._id : req.body.user_id;
   const values = [user_id];
   const queryText = `SELECT time_spent, category_id, project_id FROM timer_history WHERE user_id = $1;`;
 
