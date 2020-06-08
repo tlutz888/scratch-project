@@ -10,4 +10,8 @@ router.post('/', projectsController.addProject, (req, res) => {
   res.status(200).json('project added!');
 })
 
+router.delete('/', projectsController.deleteProject, (req, res) => {
+  res.status(200).json(res.locals.projects)
+})
+
 module.exports = router;
