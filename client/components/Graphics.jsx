@@ -2,13 +2,15 @@ import React, { Component, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-// import Piechart from './Piechart.jsx';
 
 const Graphics = (props) => {
 const {categories, projects, timerActivity} = props;
 
 const totalTimes = {};
 const projectsCopy = projects.slice();
+// const categoriesCopy = categories.slice();
+// const timerActivityCopy = timerActivity.slice();
+
   for( let projectObj of projectsCopy){
     projectObj.time_spent = {}
     for( let categoriesObj of categories){

@@ -165,8 +165,9 @@ const mainReducer = (state = initialState, action) => {
       currentCategoryName = initialState.currentCategoryName;
       currentProjectId = initialState.currentProjectId;
       currentCategoryId = initialState.currentCategoryId;
-      timerActivity = state.timerActivity.slice();
-      timerActivity.push(action.payload.timerActivity);
+      // timerActivity = state.timerActivity.slice();
+      // timerActivity.push(action.payload.timerActivity);
+      timerActivity = action.payload;
 
       return {
         ...state,

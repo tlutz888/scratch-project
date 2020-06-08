@@ -18,6 +18,7 @@ timerHistoryController.createTimerEntry = (req, res, next) => {
   db.query(queryText, values)
     .then (data => {
       console.log(`something has been added to the DB`)
+      // res.locals.timerHistory=
       return next()
     })
     .catch (err => next({

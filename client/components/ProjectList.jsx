@@ -30,9 +30,9 @@ const ProjectList = (props) => {
     const reqData = {
       time_spent: Math.floor((Date.now() - startTimer) / 1000),
       updated_at: Date.now(),
-      // updated_at: '2020-06-04',
-      // category_id: categoryId,
-      // project_id: projectId,
+      updated_at: '2020-06-04',
+      category_id: categoryId,
+      project_id: projectId,
       user_id: user._id,
     };
     // fetch('/api/timerHistory', {
@@ -55,6 +55,7 @@ const ProjectList = (props) => {
     })
       .then((data) => data.json())
       .then((data) => {
+        console.log('this is data from post', data)
         dispatch(stopTimer(data));
         setIsClicked(false);
       });

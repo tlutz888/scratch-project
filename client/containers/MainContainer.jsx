@@ -64,7 +64,11 @@ const MainContainer = () => {
     <div id="mainDiv">
       <NavBar id="navMain" user={props.user} />
       <div id="graf">
-        {/* <img src='https://i.imgur.com/8MmE3tY.png' height="300px" /> */}
+        <Graphics
+          categories={props.categories}
+          projects={props.projects}
+          timerActivity={props.timerActivity}
+        />
       </div>
       <div className="mainSection">
         <div id="sideBar">
