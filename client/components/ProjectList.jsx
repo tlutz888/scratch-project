@@ -8,7 +8,7 @@ const ProjectList = (props) => {
   const dispatch = useDispatch();
 
   // using all of these because reducer is expecting all of them
-  const [buttonStatus, setButtonStatus] = useState('▶️');
+  const [buttonStatus, setButtonStatus] = useState('►');
   const [isClicked, setIsClicked] = useState(false);
   // const [localStartTimer, setIsLocalStartTimer] = useState(0);
   // const [localEndTimer, setIsLocalTimer] = useState(0);
@@ -19,7 +19,7 @@ const ProjectList = (props) => {
   }
 
   function handleOnClickStop() {
-    setButtonStatus('▶️');
+    setButtonStatus('►');
 
   }
 
@@ -31,7 +31,7 @@ const ProjectList = (props) => {
       project_id: projectId,
       user_id: user._id,
     };
-    // fetch('/api/', {
+    // fetch('/api/timerHistory', {
     //   method: 'POST',
     //   header: { 'content-type': 'application/json' },
     //   body: JSON.stringify(reqData),
@@ -61,12 +61,12 @@ const ProjectList = (props) => {
       let payload = {
         currentProjectName: projectName,
         currentCategoryName: categoryName,
-        currentProjectId: isProjectId,
+        currentProjectId: projectId,
         currentCategoryId: categoryId,
       };
       dispatch(playTimer(payload));
       setIsClicked(false);
-    } else if(isClicked === true && buttonStatus === '▶️' && startTimer !== 0){
+    } else if(isClicked === true && buttonStatus === '►' && startTimer !== 0){
       let payloadStop = fetchStop();
       console.log(payloadStop)
       dispatch(stopTimer(payloadStop));

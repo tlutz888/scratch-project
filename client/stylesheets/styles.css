@@ -28,11 +28,13 @@ body{
   font-family: arial, sans-serif;
 }
 
-.project {
+.project{
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
   margin-bottom: 5px;
 }
-.stop{
+/* .stop{
   display: inline-block;
   padding: 8px 12px;
   font-weight: 700;
@@ -40,7 +42,7 @@ body{
   border: 1px solid #f2f2f2;
   border-radius: 20%;
   color: #757575;
-}
+} */
 
 .buttonSide {
   display: inline-block;
@@ -57,36 +59,6 @@ body{
   color: white;
   font-family: arial, sans-serif;
   text-align: left;
-}
-
-#category0 , #category5 {
-  background-image: url("https://i.imgur.com/KRjggRu.png");
-  background-size: cover;
-}
-
-#category1 , #category6 {
-  background-image: url("https://i.imgur.com/3vo7zqx.png");
-  background-size: cover;
-}
-
-#category2 , #category7 {
-  background-image: url("https://i.imgur.com/k5DUUao.png");
-  background-size: cover;
-}
-
-#category3 {
-  background-image: url("https://i.imgur.com/mdH89Aq.png");
-  background-size: cover;
-}
-
-#category4 {
-  background-image: url("https://i.imgur.com/TncN9MS.png");
-  background-size: cover;
-}
-
-.project{
-  display: flex;
-  justify-content: space-between;
 }
 
 #timer{
@@ -115,6 +87,98 @@ body{
   width: 100%;
   background-color: white;
   margin: 0;
+}
+
+#graphic {
+  padding: 50px 0;
+}
+
+.bar {
+  display: inline-block;
+  background-color: grey;
+}
+
+.Coding{
+  background-color: #D3BF6D;
+  text-align: center;
+}
+
+#category0 {
+  background-image: url("https://i.imgur.com/KRjggRu.png");
+  background-size: cover;
+}
+
+.Debug{
+  background-color: #B1D4E3;
+  text-align: center;
+}
+
+#category1{
+  background-image: url("https://i.imgur.com/3vo7zqx.png");
+  background-size: cover;
+}
+
+.Meetings{
+  background-color: #E6BBB6;
+  text-align: center;
+}
+
+#category2 {
+  background-image: url("https://i.imgur.com/TncN9MS.png");
+  background-size: cover;
+}
+
+.projectGraphic {
+  margin: 24px 0;
+}
+
+.Code {
+  background-color: #B1A4C1;
+  text-align: center;
+}
+
+#category4 {
+  background-image: url("https://i.imgur.com/k5DUUao.png");
+  background-size: cover;
+}
+
+.QA{
+  background-color: #A9D18E;
+  text-align: center;
+}
+
+#category3 {
+  background-image: url("https://i.imgur.com/L4xFp8P.png");
+  background-size: cover;
+}
+
+.Reasearch{
+  background-color: #F4B183;
+  text-align: center;
+}
+
+#category5 {
+  background-image: url("https://i.imgur.com/7iRut9b.png");
+  background-size: cover;
+}
+
+.Documentation{
+  background-color: #6AE4DD;
+  text-align: center;
+}
+
+#category6 {
+  background-image: url("https://i.imgur.com/sLORHQh.png");
+  background-size: cover;
+}
+
+.Other {
+  background-color: grey;
+}
+
+#category7 {
+  background-image: url("https://i.imgur.com/yuMZgHi.png");
+  background-size: cover;
 }
 
 #clock{

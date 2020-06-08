@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import CategoryCard from '../components/CategoryCard.jsx';
 import NavBar from '../components/NavBar.jsx';
+import Graphics from '../components/Graphics.jsx';
 import TimerModal from '../components/TimerModal.jsx';
 import { login } from '../actions/actions';
 
@@ -108,7 +109,11 @@ const MainContainer = () => {
           user={props.user}
         />
         <div id="graf">
-        {/* <img src='https://i.imgur.com/8MmE3tY.png' height="300px" /> */}
+        <Graphics
+        categories={props.categories}
+        projects={props.projects}
+        timerActivity={props.timerActivity}
+        />
         </div>
         <div className="mainSection">
           <div id="sideBar">

@@ -58,7 +58,7 @@ const mainReducer = (state = initialState, action) => {
       user = initialState.user;
       projects = initialState.projects;
       categories = initialState.categories;
-      timerActivity = initialState.imerActivity;
+      timerActivity = initialState.timerActivity;
       currentProjectName = initialState.currentProjectName;
       currentCategoryName = initialState.currentCategoryName;
       currentProjectId = initialState.currentProjectId;
