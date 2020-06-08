@@ -14,35 +14,35 @@ const MainContainer = () => {
   const dispatch = useDispatch(); 
   console.log(props)
   // loging not working fake data
-  useEffect(() => {
-    console.log('using effect')
-    if(isFetch === true){
-    const reqData = { 
-      username: 'tom',
-      password: 'tompassword'
-    }
-    fetch('/api/', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(reqData)})
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        const payload = {};
-        payload.user = data.user;
-        payload.projects = data.projects;
-        payload.categories = data.categories;
-        payload.timerActivity = data.timerHistory;
+  // useEffect(() => {
+  //   console.log('using effect')
+  //   if(isFetch === true){
+  //   const reqData = { 
+  //     username: 'tom',
+  //     password: 'tompassword'
+  //   }
+  //   fetch('/api/', {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(reqData)})
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       const payload = {};
+  //       payload.user = data.user;
+  //       payload.projects = data.projects;
+  //       payload.categories = data.categories;
+  //       payload.timerActivity = data.timerHistory;
 
-        dispatch(login(payload))
+  //       dispatch(login(payload))
         
-      })
-      setIsFetch(false)
-    } 
-  })
+  //     })
+  //     setIsFetch(false)
+  //   } 
+  // })
   
   const categoryElems = props.categories.map((info, key) => {
     return (
