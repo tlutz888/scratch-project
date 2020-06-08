@@ -24,8 +24,7 @@ projectsController.getProjects = (req, res, next) => {
 
 projectsController.addProject = (req, res, next) => {
 
-  const { title } = req.body;
-  const user_id = req.body;
+  const { title, user_id } = req.body;
   const values = [title, user_id]
   const queryText = 'INSERT INTO project (title, user_id) VALUES ($1, $2);';
 
@@ -41,21 +40,25 @@ projectsController.addProject = (req, res, next) => {
     }));
 }
 
-// projectsController.deleteProjects = (req, res, next) => {
-//   const data = req.body;
-//   const {title, user_id } = req.body;
-//   const values = [title, user_id];
-//   let deleted = `DELETE FROM Project WHERE title=$1 AND user_id=$2;`;
+projectsController.deleteProject = (req, res, next) => {
+  const {_id, user_id } = req.body;
+  const values = [_id, user_id];
+  const queryText = `
+    DELETE FROM Project
+    WHERE _id = $1 AND user_id = $2
+    RETURNING title, _id;
+  `;
 
-//   db.query(queryText, values)
-//     .then(data => {
-//       res.locals.projects = data.rows;
-//       return next();
-//     })
-//     .catch(err => next({
-//       log: 'Error in projectsController.deleteProjects',
-//       status: 400,
-//       message: err,
-//     }));
-// }
+  db.query(queryText, values)
+    .then(data => {
+      res.locals.projects = data.rows
+      return next();
+    })
+    .catch(err => next({
+      log: 'Error in projectsController.deleteProjects',
+      status: 400,
+      message: err,
+    }));
+}
+
 module.exports = projectsController;
