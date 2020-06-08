@@ -28,15 +28,21 @@ body{
   font-family: arial, sans-serif;
 }
 
+<<<<<<< HEAD
 .project{
   display: flex;
   justify-content: space-between;
   font-size: 20px;
   margin-bottom: 5px;
+=======
+.project {
+  font-size: 14px;
+  margin-bottom: 3px;
+>>>>>>> 2a65b1ba96449715e856e4d15999f14656397c0a
 }
 /* .stop{
   display: inline-block;
-  padding: 8px 12px;
+  /* padding: 8px 4px; */
   font-weight: 700;
   font-size: 20px;
   border: 1px solid #f2f2f2;

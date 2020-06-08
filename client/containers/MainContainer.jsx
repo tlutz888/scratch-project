@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CategoryCard from '../components/CategoryCard.jsx';
 import NavBar from '../components/NavBar.jsx';
 import Graphics from '../components/Graphics.jsx';
@@ -10,14 +10,85 @@ import TimerModal from '../components/TimerModal.jsx';
 import { login } from '../actions/actions';
 
 const MainContainer = () => {
-  const props = useSelector(state => state);
+  const props = useSelector((state) => state);
   const [isFetch, setIsFetch] = useState(true);
-  const dispatch = useDispatch(); 
-  console.log(props)
+  const dispatch = useDispatch();
+  console.log(props);
   // loging not working fake data
   useEffect(() => {
-    if(isFetch === true){
-        const data = {
+    console.log('using effect');
+    if (isFetch === true) {
+      const reqData = {
+        username: 'tom',
+        password: 'tompassword',
+      };
+      fetch('/api/', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(reqData),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          const payload = {};
+          payload.user = data.user;
+          payload.projects = data.projects;
+          payload.categories = data.categories;
+          payload.timerActivity = data.timerHistory;
+
+          dispatch(login(payload));
+        });
+      setIsFetch(false);
+    }
+  });
+
+  const categoryElems = props.categories.map((info, key) => {
+    return (
+      <CategoryCard
+        key={'category' + key}
+        id={'category' + key}
+        info={info}
+        user={props.user}
+        projects={props.projects}
+        timerActivity={props.timerActivity}
+        endTimer={props.endTimer}
+        startTimer={props.startTimer}
+      />
+    );
+  });
+
+  return (
+    <div id="mainDiv">
+      <NavBar id="navMain" user={props.user} />
+      <div id="graf">
+        {/* <img src='https://i.imgur.com/8MmE3tY.png' height="300px" /> */}
+      </div>
+      <div className="mainSection">
+        <div id="sideBar">
+          <button className="buttonSide">Add Project</button>
+          <button className="buttonSide">Delete Project</button>
+          <button className="buttonSide">Conclude Project</button>
+          <TimerModal
+            id="timer"
+            currentProjectName={props.currentProjectName}
+            currentCategoryName={props.currentCategoryName}
+            startTimer={props.startTimer}
+            endTimer={props.endTimer}
+          />
+        </div>
+        <div className="cardsContainer">{categoryElems}</div>
+      </div>
+    </div>
+  );
+};
+
+export default MainContainer;
+
+/* 
+const data = {
           user: {
               _id: 1,
               account_name: 'tom',
@@ -137,3 +208,4 @@ const MainContainer = () => {
 }
 
 export default MainContainer;
+*/

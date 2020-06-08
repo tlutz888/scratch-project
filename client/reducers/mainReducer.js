@@ -160,7 +160,7 @@ const mainReducer = (state = initialState, action) => {
     case types.STOP_TIMER:
       endTimer = Date.now();
       lastInterval = endTimer - startTimer;
-      startTimer = initialState.startTimer;
+      startTimer = 0;
       currentProjectName = initialState.currentProjectName;
       currentCategoryName = initialState.currentCategoryName;
       currentProjectId = initialState.currentProjectId;
