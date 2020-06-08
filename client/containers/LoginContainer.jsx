@@ -53,7 +53,7 @@ const LoginContainer = () => {
   //         },
   //           projects: [{
   //             _id: 1,
-  //             title: 'Others',
+  //             title: 'Not specified',
   //           }, {           
   //             _id: 2,
   //             title: 'Project 1',

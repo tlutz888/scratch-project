@@ -1,5 +1,6 @@
 body{
   margin: 0;
+  color: #757575;
   font-family: arial, sans-serif;
 }
 #app {
@@ -25,6 +26,123 @@ body{
   border-radius: 2px;
   color: #757575;
   font-family: arial, sans-serif;
+}
+
+.project {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.stop{
+  display: inline-block;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 20px;
+  border: 1px solid #f2f2f2;
+  border-radius: 20%;
+  color: #757575;
+}
+
+.buttonSide {
+  display: inline-block;
+  background-image: url('https://i.imgur.com/6KwLDHw.png');
+  background-size: cover;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  width: 180px;
+  height: 40px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  font-family: arial, sans-serif;
+  text-align: left;
+}
+
+#category0 , #category5 {
+  background-image: url("https://i.imgur.com/KRjggRu.png");
+  background-size: cover;
+}
+
+#category1 , #category6 {
+  background-image: url("https://i.imgur.com/3vo7zqx.png");
+  background-size: cover;
+}
+
+#category2 , #category7 {
+  background-image: url("https://i.imgur.com/k5DUUao.png");
+  background-size: cover;
+}
+
+#category3 {
+  background-image: url("https://i.imgur.com/mdH89Aq.png");
+  background-size: cover;
+}
+
+#category4 {
+  background-image: url("https://i.imgur.com/TncN9MS.png");
+  background-size: cover;
+}
+
+.project{
+  display: flex;
+  justify-content: space-between;
+}
+
+#timer{
+  /* background-image: url("https://i.imgur.com/oc8YMDa.png");
+  background-size: cover; */
+  border: 5px solid gray;
+  width: 200px;
+  border-radius: 20%;
+  /* height: 200px; */
+  margin-top: 60px;
+  padding: 10px;
+  font-size: 10px;
+}
+.mainSection {
+  margin-top: -300px;
+  max-width: 1200px;
+}
+#sideBar{
+  margin-top: 30px;
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  color: grey;
+} 
+#graf{
+  width: 100%;
+  background-color: white;
+  margin: 0;
+}
+
+#clock{
+  border: 5px solid gray;
+  width: 130px;
+  padding: 5px;
+  border-radius: 20%;
+  font-size: 30px;
+  text-align: center;
+}
+#intrack{
+  color: black;
+}
+.time{
+  color: black;
+}
+
+.cardsContainer{
+  display: grid;
+  margin-left: 170px;
+  margin-top: 300px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+.categoryCard {
+  width: 240px;
+  height: 240px;
+  padding: 70px;
 }
 
 .button:hover {
