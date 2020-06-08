@@ -34,7 +34,7 @@ body{
 }
 .stop{
   display: inline-block;
-  /* padding: 8px 12px; */
+  /* padding: 8px 4px; */
   font-weight: 700;
   font-size: 20px;
   border: 1px solid #f2f2f2;
