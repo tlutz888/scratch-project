@@ -1,13 +1,8 @@
 import * as types from '../constants/constantsType';
 
-// export const  = () => ({
-//   type: types.,
-//   payload: ,
-// });
-
-export const login = (allData) => ({
+export const login = (user) => ({
   type: types.LOGIN,
-  payload: allData,
+  payload: user,
 });
 
 export const signUp = (user) => ({

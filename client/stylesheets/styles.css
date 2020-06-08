@@ -1,6 +1,23 @@
+body{
+  margin: 0;
+  font-family: arial, sans-serif;
+}
+#app {
+  width: 100%;
+}
+
+#logo {
+  display: inline-block;
+  padding: 0px 12px;
+  font-weight: 700;
+  font-size: 30px;
+  border-radius: 2px;
+  color: #757575;
+  font-family: arial, sans-serif;
+}
 .button {
   display: inline-block;
-  background: #f2f2f2;
+  background: black;
   padding: 8px 12px;
   font-weight: 700;
   font-size: 13px;
@@ -16,15 +33,15 @@
   cursor: default;
 }
 
-.navBar {
+#nav {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: black;
-  text-decoration: underline;
-  margin: 15px 5px;
-  float: right;
-  margin-right: 15px;
-  opacity: .75;
-  opacity: 1;
-  cursor: default;
+  width: 100%;
 }
 
 #log-page{
@@ -48,6 +65,8 @@
 }
 
 #form {
+  margin: auto;
+  margin-top: 10%;
   width: 300px;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -57,6 +76,26 @@
   resize: none;
   text-align: center;
 }
+
+#no-log-in{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+  width: 300px;
+}
+
+#sign-up {
+  margin-top: 0;
+  padding: 2px;
+  background-color: white; 
+}
+
+#forgot{
+  align-self: center;
+  margin-right: 10px;
+}
+
 
 #form-sign-up{
   display: flex;
@@ -75,7 +114,7 @@
   height: 400px;
 }
 
-.info, #log-in{
+.info, #log-in, #password{
   margin: 5px;
   width: 240px;
   height: 30px;
@@ -109,23 +148,10 @@ input{
   resize: none;
 }
 
-body{
-  font-size: 15px;
-  max-width: 900px;
-  margin: auto;
-}
-
-
 #user-memories{
   border-collapse: separate;
   border-spacing: 30px 0;
   text-align: center;
-}
-
-img.memories{
-  border-radius: 50%; 
-  width: 75px;
-  height: 75px;
 }
 
 #user-numbers {
@@ -136,9 +162,4 @@ img.memories{
 .media{
   margin-left: 157px;
   max-width: 900px;
-}
-
-img.post{ 
-  width: 300px;
-  height: 300px;
 }

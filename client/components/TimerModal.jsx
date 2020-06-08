@@ -1,9 +1,10 @@
-import React from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useSelector } from "react-redux";
 
-const TimerModal = props => {
-  const {currentProjectName, currentCategoryName, startTimer, endTimer} = props;
-  const [minutes, setMinuts] = useState(0);
+const TimerModal = (props) => {
+  const {currentProjectName, currentCategoryName, startTimer} = props;
+  const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   
@@ -29,11 +30,13 @@ const TimerModal = props => {
   }, [isActive, minutes, seconds]);
 
   return (
-  <div id='timer'>
-    <h2>You are working on</h2>
-    <h2 id='intrack'>{currentCategoryName} {currentProjectName} for</h2>
-    <div id='clock'>{minutes}m {seconds}s</div>
-  </div>
+    <div className="project"> 
+      <div id='timer'>
+        <h2>You are working on</h2>
+        <h2 id='intrack'>{currentCategoryName} {currentProjectName} for</h2>
+        <div id='clock'>{minutes}m {seconds}s</div>
+      </div>
+    </div>
   );
 };
 

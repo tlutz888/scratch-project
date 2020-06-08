@@ -4,7 +4,7 @@ const initialState = {
   user: {},
   projects: [],
   categories: [],
-  timerActive: [],
+  timerActivity: [],
   currentProjectName:'',
   currentCategoryName:'',
   currentProjectId: 0,
@@ -27,7 +27,7 @@ const mainReducer = (state = initialState, action) => {
   let endTimer;
   let lastInterval;
 
-  switch (action.type) {
+  switch (action.type) {      
     case types.LOGIN:
       user = action.payload.user;
       projects = action.payload.projects;
@@ -44,17 +44,21 @@ const mainReducer = (state = initialState, action) => {
     
     case types.SIGNUP:
       user = action.payload.user;
+      projects = action.payload.Project;
+      categories = action.payload.Category;
   
       return {
         ...state,
         user,
+        projects,
+        categories,
       };
 
     case types.LOGOUT:
       user = {};
       projects = [];
       categories = [];
-      timerActive = [];
+      timerActivity = [];
       currentProjectName = '';
       currentCategoryName = '';
       currentProjectId = 0;
@@ -79,45 +83,43 @@ const mainReducer = (state = initialState, action) => {
       };
 
     case types.ADD_PROJECT:
-      user = action.payload.user;
-      projects = action.payload.projects;
-      categories = action.payload.categories;
-      timerActivity = action.payload.timerActivity;
+      projects = state.projects.slice();
+      projects.push(action.payload.projects);
 
       return {
         ...state,
-        user ,
         projects,
-        categories,
-        timerActivity,
       };
 
     case types.DELETE_PROJECT:
-      user = action.payload.user;
-      projects = action.payload.projects;
-      categories = action.payload.categories;
+      projects = [];
+      for (let project of state.projects){
+        if(project !== action.payload.projects){
+          projects.push(project);
+        } 
+      }
 
       return {
         ...state,
-        user ,
         projects,
-        categories,
       };
 
     case types.COMPLETE_PROJECT:
-      user = action.payload.user;
-      projects = action.payload.projects;
-      categories = action.payload.categories;
+      projects = [];
+      for (let project of state.projects){
+        if(project !== action.payload.projects){
+          projects.push(project);
+        } 
+      }
 
       return {
         ...state,
-        user ,
         projects,
-        categories,
       };
 
     case types.ADD_CATEGORY:
-      categories = action.payload.categories;
+      categories = state.categories.slice();
+      categories.push(action.payload.categories);
 
       return {
         ...state,
@@ -125,7 +127,12 @@ const mainReducer = (state = initialState, action) => {
       };
 
     case types.DELETE_CATEGORY:
-      categories = action.payload.categories;
+      categories = [];
+      for (let category of state.categories){
+        if(category !== action.payload.categories){
+          categories.push(category);
+        } 
+      }
 
       return {
         ...state,
@@ -149,16 +156,17 @@ const mainReducer = (state = initialState, action) => {
       };
 
     case types.STOP_TIMER:
-      stopTimer = Date.now();
-      lastInterval = startTimer - stopTimer;
-      timerActivity = action.payload.timerActivity;
+      endTimer = Date.now();
+      lastInterval = endTimer - startTimer;
+      timerActivity = state.timerActivity.slice();
+      timerActivity.push(action.payload);
       startTimer = 0;
 
       return {
         ...state,
         timerActivity,
         startTimer,
-        stopTimer,
+        endTimer,
         lastInterval,
       };
 
