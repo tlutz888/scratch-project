@@ -28,16 +28,27 @@ const ProjectList = (props) => {
 
   function handleOnClickStop() {
     const reqData = {
-      time_spent: Date.now() - startTimer,
-      updated_at: new Date().toString(),
+      time_spent: Math.floor((Date.now() - startTimer) / 1000),
+      updated_at: Date.now(),
+      // updated_at: '2020-06-04',
       category_id: categoryId,
       project_id: projectId,
-      user_id: user._id,
+      user_id: user._id
     };
+    const stringData = JSON.stringify({
+      "category_id": 1,
+      "project_id": 1,
+      "time_spent": 6636,
+      "updated_at": 1591644755437,
+      "user_id": 1
+    }
+    
+    );
+    console.log('reqdata: ',  reqData)
     setButtonStatus('▶️');
     fetch('/api/timerHistory', {
       method: 'POST',
-      header: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(reqData),
     }).then((data) => data.json())
     .then(data => {
@@ -57,26 +68,26 @@ const ProjectList = (props) => {
 
   // }
 
-  function fetchStop() {
-    const reqData = {
-      time_spent: Date.now() - startTimer,
-      updated_at: new Date().toString(),
-      category_id: categoryId,
-      project_id: projectId,
-      user_id: user._id,
-    };
-    // fetch('/api/', {
-    //   method: 'POST',
-    //   header: { 'content-type': 'application/json' },
-    //   body: JSON.stringify(reqData),
-    // }).then((data) => {
-      //dummy data
-      const payload = {};
-          payload.timerActivity = reqData
-      return payload;
+  // function fetchStop() {
+  //   const reqData = {
+  //     time_spent: Date.now() - startTimer,
+  //     updated_at: new Date().toString(),
+  //     category_id: categoryId,
+  //     project_id: projectId,
+  //     user_id: user._id,
+  //   };
+  //   // fetch('/api/', {
+  //   //   method: 'POST',
+  //   //   header: { 'content-type': 'application/json' },
+  //   //   body: JSON.stringify(reqData),
+  //   // }).then((data) => {
+  //     //dummy data
+  //     const payload = {};
+  //         payload.timerActivity = reqData
+  //     return payload;
       
-    // });
-  }
+  //   // });
+  // }
 /*
   useEffect(() => {
     console.log('useEffect triggered')

@@ -4,6 +4,7 @@ const db = require('../model/db.js');
 const timerHistoryController = {};
 
 timerHistoryController.createTimerEntry = (req, res, next) => {
+  console.log('req body: ',req.body)
 
   const { time_spent, updated_at, category_id, project_id, user_id } = req.body;
 
