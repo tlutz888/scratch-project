@@ -41,4 +41,21 @@ projectsController.addProject = (req, res, next) => {
     }));
 }
 
-module.exports = projectsController; 
+// projectsController.deleteProjects = (req, res, next) => {
+//   const data = req.body;
+//   const {title, user_id } = req.body;
+//   const values = [title, user_id];
+//   let deleted = `DELETE FROM Project WHERE title=$1 AND user_id=$2;`;
+
+//   db.query(queryText, values)
+//     .then(data => {
+//       res.locals.projects = data.rows;
+//       return next();
+//     })
+//     .catch(err => next({
+//       log: 'Error in projectsController.deleteProjects',
+//       status: 400,
+//       message: err,
+//     }));
+// }
+module.exports = projectsController;

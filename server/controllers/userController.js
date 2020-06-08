@@ -41,7 +41,8 @@ userController.validateUser = (req, res, next) => {
       // check password make this more secure later with bcrypt
       if (dbUser.password === password) {
         res.locals.user = {
-          _id: dbUser._id
+          account_name: dbUser.account_name,
+          _id: dbUser._id,
         };
         return next();
       }

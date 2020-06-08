@@ -4,6 +4,9 @@ const initialState = {
   user: {},
   projects: [],
   categories: [],
+  timerActivity: [],
+  currentProjectName:'',
+  currentCategoryName:'',
   currentProjectId: 0,
   currentCategoryId: 0,
   startTimer: 0,
@@ -15,25 +18,35 @@ const mainReducer = (state = initialState, action) => {
   let user;
   let projects;
   let categories;
+  let timerActivity;
+  let currentProjectName;
+  let currentCategoryName;
   let currentProjectId;
   let currentCategoryId;
   let startTimer;
   let endTimer;
   let lastInterval;
 
-  switch (action.type) {
-    // case types.SIGNUP
-    // case types.LOGOUT
-    // case types.ADD_PROJECT
-    // case types.DELETE_PROJECT
-    // case types.COMPLETE_PROJECT
-    // case types.ADD_CATEGORY
-    // case types.DELETE_CATEGORY
+  switch (action.type) {      
     case types.LOGIN:
       user = action.payload.user;
       projects = action.payload.projects;
       categories = action.payload.categories;
+      timerActivity = action.payload.timerActivity;
 
+      return {
+        ...state,
+        user,
+        projects,
+        categories,
+        timerActivity,
+      };
+    
+    case types.SIGNUP:
+      user = action.payload.user;
+      projects = action.payload.Project;
+      categories = action.payload.Category;
+  
       return {
         ...state,
         user,
@@ -41,31 +54,119 @@ const mainReducer = (state = initialState, action) => {
         categories,
       };
 
-    case types.START_TIMER:
+    case types.LOGOUT:
+      user = {};
+      projects = [];
+      categories = [];
+      timerActivity = [];
+      currentProjectName = '';
+      currentCategoryName = '';
+      currentProjectId = 0;
+      currentCategoryId = 0;
+      startTimer = 0;
+      endTimer = 0;
+      lastInterval = 0;
+  
+      return {
+        ...state,
+        user ,
+        projects,
+        categories,
+        timerActivity,
+        currentProjectName,
+        currentCategoryName,
+        currentProjectId,
+        currentCategoryId,
+        startTimer,
+        endTimer,
+        lastInterval,
+      };
+
+    case types.ADD_PROJECT:
+      projects = state.projects.slice();
+      projects.push(action.payload.projects);
+
+      return {
+        ...state,
+        projects,
+      };
+
+    case types.DELETE_PROJECT:
+      projects = [];
+      for (let project of state.projects){
+        if(project !== action.payload.projects){
+          projects.push(project);
+        } 
+      }
+
+      return {
+        ...state,
+        projects,
+      };
+
+    case types.COMPLETE_PROJECT:
+      projects = [];
+      for (let project of state.projects){
+        if(project !== action.payload.projects){
+          projects.push(project);
+        } 
+      }
+
+      return {
+        ...state,
+        projects,
+      };
+
+    case types.ADD_CATEGORY:
+      categories = state.categories.slice();
+      categories.push(action.payload.categories);
+
+      return {
+        ...state,
+        categories,
+      };
+
+    case types.DELETE_CATEGORY:
+      categories = [];
+      for (let category of state.categories){
+        if(category !== action.payload.categories){
+          categories.push(category);
+        } 
+      }
+
+      return {
+        ...state,
+        categories,
+      };
+
+    case types.PLAY_TIMER:
       startTimer = Date.now();
+      currentProjectName = action.payload.currentProjectName;
+      currentCategoryName = action.payload.currentCategoryName;
       currentProjectId = action.payload.currentProjectId;
       currentCategoryId = action.payload.currentCategoryId;
 
       return {
         ...state,
+        currentProjectName,
+        currentCategoryName,
         currentProjectId,
         currentCategoryId,
         startTimer,
       };
 
     case types.STOP_TIMER:
-      stopTimer = Date.now();
-      currentProjectId = action.payload.currentProjectId;
-      currentCategoryId = action.payload.currentCategoryId;
-      lastInterval = startTimer - stopTimer;
+      endTimer = Date.now();
+      lastInterval = endTimer - startTimer;
+      timerActivity = state.timerActivity.slice();
+      timerActivity.push(action.payload);
       startTimer = 0;
 
       return {
         ...state,
-        currentProjectId,
-        currentCategoryId,
+        timerActivity,
         startTimer,
-        stopTimer,
+        endTimer,
         lastInterval,
       };
 
