@@ -13,10 +13,10 @@ const TimerModal = (props) => {
     if (startTimer !== 0) {
       setIsActive(true);
       interval = setInterval(() => {
-        if(seconds < 61){
+        if(seconds < 60){
           setSeconds(seconds => seconds + 1)
         }else{
-          setMinutes((minutes) => {minutes+1});
+          setMinutes(minutes => minutes + 1);
           setSeconds(0);
         };
       }, 1000);
@@ -32,9 +32,11 @@ const TimerModal = (props) => {
   return (
     <div className="project"> 
       <div id='timer'>
-        <h2>You are working on</h2>
-        <h2 id='intrack'>{currentCategoryName} {currentProjectName} for</h2>
-        <div id='clock'>{minutes}m {seconds}s</div>
+        <h2>You are working on:</h2>
+        <h2 id='intrack'>{currentCategoryName} {currentProjectName}</h2>
+        <h2>for:
+          <div id='clock'><span className='time'>{minutes}m</span>:<span className='time'>{seconds}s</span></div>
+        </h2>
       </div>
     </div>
   );

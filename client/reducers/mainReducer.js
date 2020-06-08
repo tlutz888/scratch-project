@@ -55,17 +55,17 @@ const mainReducer = (state = initialState, action) => {
       };
 
     case types.LOGOUT:
-      user = {};
-      projects = [];
-      categories = [];
-      timerActivity = [];
-      currentProjectName = '';
-      currentCategoryName = '';
-      currentProjectId = 0;
-      currentCategoryId = 0;
-      startTimer = 0;
-      endTimer = 0;
-      lastInterval = 0;
+      user = initialState.user;
+      projects = initialState.projects;
+      categories = initialState.categories;
+      timerActivity = initialState.imerActivity;
+      currentProjectName = initialState.currentProjectName;
+      currentCategoryName = initialState.currentCategoryName;
+      currentProjectId = initialState.currentProjectId;
+      currentCategoryId = initialState.currentCategoryId;
+      startTimer = initialState.startTimer;
+      endTimer = initialState.endTimer;
+      lastInterval = initialState.lastInterval;
   
       return {
         ...state,
@@ -141,6 +141,7 @@ const mainReducer = (state = initialState, action) => {
 
     case types.PLAY_TIMER:
       startTimer = Date.now();
+      endTimer = initialState.startTimer;
       currentProjectName = action.payload.currentProjectName;
       currentCategoryName = action.payload.currentCategoryName;
       currentProjectId = action.payload.currentProjectId;
@@ -153,18 +154,27 @@ const mainReducer = (state = initialState, action) => {
         currentProjectId,
         currentCategoryId,
         startTimer,
+        endTimer,
       };
 
     case types.STOP_TIMER:
       endTimer = Date.now();
       lastInterval = endTimer - startTimer;
+      startTimer = initialState.startTimer;
+      currentProjectName = initialState.currentProjectName;
+      currentCategoryName = initialState.currentCategoryName;
+      currentProjectId = initialState.currentProjectId;
+      currentCategoryId = initialState.currentCategoryId;
       timerActivity = state.timerActivity.slice();
-      timerActivity.push(action.payload);
-      startTimer = 0;
+      timerActivity.push(action.payload.timerActivity);
 
       return {
         ...state,
         timerActivity,
+        currentProjectName,
+        currentCategoryName,
+        currentProjectId,
+        currentCategoryId,
         startTimer,
         endTimer,
         lastInterval,

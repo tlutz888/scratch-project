@@ -23,7 +23,7 @@ const MainContainer = () => {
           },
           projects: [{
               _id: 1,
-              title: 'Others',
+              title: 'Not specified',
             }, {           
               _id: 2,
               title: 'Project 1',
@@ -85,15 +85,17 @@ const MainContainer = () => {
       setIsFetch(false)
     }
   })
-
+  
   const categoryElems = props.categories.map((info, key) => {
     return (
       <CategoryCard
-        key={key}
+        key={'category'+key}
+        id={'category'+key}
         info={info}
         user={props.user}
         projects={props.projects}
-        timerActivity = {props.timerActivity}
+        timerActivity={props.timerActivity}
+        endTimer={props.endTimer}
         startTimer={props.startTimer}
       />
     );
@@ -105,16 +107,24 @@ const MainContainer = () => {
           id="navMain"
           user={props.user}
         />
+        <div id="graf">
+        {/* <img src='https://i.imgur.com/8MmE3tY.png' height="300px" /> */}
+        </div>
         <div className="mainSection">
-          <div className="cardsContainer">
-            {categoryElems}
-            <TimerModal
+          <div id="sideBar">
+          <button className='buttonSide'>Add Project</button>
+          <button className='buttonSide'>Delete Project</button>
+          <button className='buttonSide'>Conclude Project</button>
+          <TimerModal
               id="timer"
               currentProjectName = {props.currentProjectName}
               currentCategoryName = {props.currentCategoryName}
               startTimer={props.startTimer}
               endTimer={props.endTimer} 
             />
+          </div>
+          <div className="cardsContainer">
+            {categoryElems}
           </div>
         </div>
       </div>
